@@ -1,0 +1,109 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --background: #f2f0eb;
+  --foreground: #1c1c1c;
+  --muted: #f7f5f0;
+  --muted-foreground: rgba(28, 28, 28, 0.55);
+  --accent: #a67c52;
+  --accent-foreground: #f2f0eb;
+  --border: rgba(28, 28, 28, 0.10);
+  --input: rgba(28, 28, 28, 0.10);
+  --ring: #a67c52;
+
+  --card: #f7f5f0;
+  --card-foreground: #1c1c1c;
+  --popover: #f2f0eb;
+  --popover-foreground: #1c1c1c;
+  --primary: #1c1c1c;
+  --primary-foreground: #f2f0eb;
+  --secondary: #e8e5de;
+  --secondary-foreground: #1c1c1c;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #f2f0eb;
+}
+
+.dark {
+  --background: #1c1c1c;
+  --foreground: #f2f0eb;
+  --muted: #2a2a2a;
+  --muted-foreground: rgba(242, 240, 235, 0.55);
+  --accent: #c89870;
+  --accent-foreground: #1c1c1c;
+  --border: rgba(242, 240, 235, 0.10);
+  --input: rgba(242, 240, 235, 0.10);
+  --ring: #c89870;
+  --card: #232323;
+  --card-foreground: #f2f0eb;
+  --popover: #1c1c1c;
+  --popover-foreground: #f2f0eb;
+  --primary: #f2f0eb;
+  --primary-foreground: #1c1c1c;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #f2f0eb;
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s var(--ease-out-expo) both;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+}
