@@ -359,16 +359,16 @@ function Index() {
                   Selected Frames
                 </h2>
               </div>
-              <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              <div className="flex flex-wrap gap-3">
                 {filters.map((f) => (
                   <button
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={
+                    className={`rounded-full border px-6 py-2.5 font-mono text-xs uppercase tracking-widest transition-all ${
                       filter === f
-                        ? "border-b border-foreground pb-1 text-foreground"
-                        : "pb-1 transition-colors hover:text-foreground"
-                    }
+                        ? "bg-foreground text-background border-foreground"
+                        : "bg-transparent text-muted-foreground border-border hover:border-foreground hover:text-foreground"
+                    }`}
                   >
                     {f}
                   </button>
