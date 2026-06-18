@@ -78,7 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Zexa — Builders of Quiet Precision" },
-      { name: "description", content: "Zexa is a builders and construction studio crafting residential, commercial, renovation, and interior works defined by material honesty and structural rigor." },
+      {
+        name: "description",
+        content:
+          "Zexa is a builders and construction studio crafting residential, commercial, renovation, and interior works defined by material honesty and structural rigor.",
+      },
       { name: "author", content: "Zexa Builders" },
       { property: "og:site_name", content: "Zexa" },
       { property: "og:type", content: "website" },
@@ -87,7 +91,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap",
+      },
       { rel: "stylesheet", href: appCss },
     ],
   }),

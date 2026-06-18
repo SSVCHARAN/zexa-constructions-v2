@@ -159,7 +159,15 @@ const testimonials = [
 
 const filters: Category[] = ["All", "Residential", "Commercial", "Renovation", "Interior"];
 
-function FadeIn({ children, delay = 0, className }: { children: React.ReactNode; delay?: number; className?: string }) {
+function FadeIn({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   const reduce = useReducedMotion();
   return (
     <motion.div
@@ -182,23 +190,31 @@ function Index() {
   );
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-accent/20">
+    <div className="min-h-screen bg-background text-foreground selection:bg-ring/30">
       {/* Nav */}
-      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+      <nav className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
           <a href="#top" className="font-display text-2xl font-bold tracking-tighter">
             ZEXA
           </a>
           <div className="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-[0.2em] md:flex">
-            <a href="#work" className="transition-colors hover:text-accent">Work</a>
-            <a href="#services" className="transition-colors hover:text-accent">Services</a>
-            <a href="#process" className="transition-colors hover:text-accent">Process</a>
-            <a href="#contact" className="transition-colors hover:text-accent">Contact</a>
+            <a href="#work" className="transition-colors hover:text-accent">
+              Work
+            </a>
+            <a href="#services" className="transition-colors hover:text-accent">
+              Services
+            </a>
+            <a href="#process" className="transition-colors hover:text-accent">
+              Process
+            </a>
+            <a href="#contact" className="transition-colors hover:text-accent">
+              Contact
+            </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-foreground px-5 py-2.5 text-background transition-all hover:bg-accent"
+              className="rounded-full bg-foreground px-5 py-2.5 text-background transition-all hover:bg-accent hover:text-foreground hover:shadow-lg hover:shadow-accent/20"
             >
               WhatsApp
             </a>
@@ -207,7 +223,7 @@ function Index() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-foreground px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-background md:hidden"
+            className="rounded-full bg-foreground px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-background md:hidden"
           >
             WhatsApp
           </a>
@@ -216,65 +232,65 @@ function Index() {
 
       <main id="top">
         {/* Hero */}
-        <header className="pt-24 pb-12">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="mb-20 max-w-[1000px] animate-fade-up">
+        <header className="relative flex min-h-[calc(100vh-80px)] items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={heroImg}
+              alt="Immersive architectural interior"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70"></div>
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
+            <FadeIn>
               <span className="mb-6 block font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
                 Architecture &amp; Construction — Est. 2012
               </span>
-              <h1 className="text-balance font-display text-5xl leading-[0.9] tracking-tighter md:text-8xl">
-                Quiet <span className="italic">precision</span> built for generations.
+              <h1 className="text-balance font-display text-5xl font-light leading-[1.1] tracking-tighter md:text-7xl lg:text-8xl">
+                Quiet <span className="font-medium text-accent">precision</span> built for
+                generations.
               </h1>
-              <div className="mt-12 flex flex-wrap gap-8">
+              <p className="mx-auto mt-6 max-w-xl text-lg text-white/80 md:text-xl">
+                Residential, commercial, renovation, and interior construction defined by material
+                honesty and structural rigor.
+              </p>
+              <div className="mt-10 flex flex-wrap justify-center gap-6">
                 <a
                   href="#work"
-                  className="border-b-2 border-foreground pb-1 font-mono text-[11px] uppercase tracking-widest transition-all hover:border-accent hover:text-accent"
+                  className="rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-white hover:text-foreground hover:shadow-lg"
                 >
                   View Selected Work
                 </a>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-b-2 border-foreground pb-1 font-mono text-[11px] uppercase tracking-widest transition-all hover:border-accent hover:text-accent"
-                >
-                  Get in Touch
-                </a>
               </div>
-            </div>
-            <div className="w-full animate-fade-up [animation-delay:200ms]">
-              <img
-                src={heroImg}
-                alt="Minimalist concrete villa at dusk with warm interior lighting"
-                width={1920}
-                height={832}
-                className="h-[60vh] w-full object-cover"
-              />
-              <div className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                <span>The Malaparte Project</span>
-                <span>2024 / Residential</span>
-              </div>
-            </div>
+            </FadeIn>
           </div>
         </header>
 
         {/* About + Stats */}
-        <section id="about" className="border-b border-border py-32">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 px-6 md:grid-cols-12">
-            <FadeIn className="md:col-span-5">
-              <span className="mb-6 block font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
-                The Studio
-              </span>
-              <h2 className="font-display text-3xl leading-tight md:text-4xl">
-                We translate architectural intent into physical permanence.
-              </h2>
+        <section id="about" className="py-24 md:py-32 border-b border-border">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:gap-16">
+            <FadeIn>
+              <div className="overflow-hidden bg-muted aspect-[4/5] relative">
+                <img
+                  src={project1}
+                  alt="Studio workspace"
+                  className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
+                />
+              </div>
             </FadeIn>
-            <FadeIn delay={0.1} className="md:col-span-6 md:col-start-7">
-              <p className="mb-16 max-w-prose text-lg leading-relaxed text-muted-foreground">
-                Founded on the principles of material honesty and structural rigor, Zexa
-                specializes in residential, commercial, and renovation works that prioritize
-                silence over noise. We self-perform the difficult parts, and we believe the best
-                building is the one that feels inevitable.
+            <FadeIn delay={0.2}>
+              <span className="mb-4 block font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                Our Philosophy
+              </span>
+              <h2 className="mb-6 font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
+                Design With <br /> Intention
+              </h2>
+              <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+                Founded on the principles of material honesty and structural rigor, Zexa specializes
+                in residential, commercial, and renovation works that prioritize silence over noise.
+                We self-perform the difficult parts, and we believe the best building is the one
+                that feels inevitable.
               </p>
               <div className="grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
                 {[
@@ -284,7 +300,9 @@ function Index() {
                   ["06", "Design Awards"],
                 ].map(([n, label]) => (
                   <div key={label} className="space-y-1">
-                    <span className="block font-display text-3xl md:text-4xl">{n}</span>
+                    <span className="block font-display text-3xl md:text-4xl text-foreground">
+                      {n}
+                    </span>
                     <span className="block font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
                       {label}
                     </span>
@@ -303,9 +321,7 @@ function Index() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
                   Capabilities
                 </span>
-                <h2 className="font-display text-4xl tracking-tight md:text-5xl">
-                  What we build.
-                </h2>
+                <h2 className="font-display text-4xl tracking-tight md:text-5xl">What we build.</h2>
               </div>
               <span className="hidden font-mono text-[10px] uppercase tracking-widest text-muted-foreground md:block">
                 01 — 04
@@ -318,7 +334,7 @@ function Index() {
                     <span className="font-mono text-[10px] uppercase tracking-widest text-accent md:col-span-1">
                       {s.n}
                     </span>
-                    <h3 className="font-display text-2xl italic transition-colors group-hover:text-accent md:col-span-5 md:text-3xl">
+                    <h3 className="font-display text-2xl font-light transition-colors group-hover:text-ring md:col-span-5 md:text-3xl">
                       {s.title}
                     </h3>
                     <p className="max-w-prose text-base leading-relaxed text-muted-foreground md:col-span-6">
@@ -339,7 +355,7 @@ function Index() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
                   Selection
                 </span>
-                <h2 className="font-display text-4xl italic tracking-tight md:text-5xl">
+                <h2 className="font-display text-4xl font-light tracking-tight md:text-5xl">
                   Selected Frames
                 </h2>
               </div>
@@ -360,26 +376,28 @@ function Index() {
               </div>
             </FadeIn>
 
-            <div className="grid grid-cols-12 gap-x-6 gap-y-20 md:gap-y-32">
+            <div className="grid grid-cols-12 gap-4 md:gap-5">
               {visible.map((p, i) => (
                 <FadeIn
                   key={p.title}
                   delay={i * 0.05}
                   className={`col-span-12 ${p.span} ${p.offset ?? ""} group cursor-pointer`}
                 >
-                  <div className="mb-6 overflow-hidden">
+                  <div className={`relative overflow-hidden w-full ${p.aspect} bg-muted`}>
                     <img
                       src={p.img}
                       alt={p.alt}
                       loading="lazy"
-                      className={`w-full ${p.aspect} object-cover transition-transform duration-700 group-hover:scale-[1.03]`}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                  </div>
-                  <div className="flex flex-col gap-2 border-t border-border pt-4 md:flex-row md:items-baseline md:justify-between">
-                    <span className="font-display text-xl md:text-2xl">{p.title}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                      {p.meta}
-                    </span>
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 md:p-8 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      <h3 className="font-display text-2xl font-light text-white md:text-3xl">
+                        {p.title}
+                      </h3>
+                      <span className="mt-1 font-mono text-[10px] uppercase tracking-widest text-white/70">
+                        {p.meta}
+                      </span>
+                    </div>
                   </div>
                 </FadeIn>
               ))}
@@ -405,7 +423,7 @@ function Index() {
                     <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
                       {p.n}
                     </span>
-                    <h3 className="font-display text-3xl italic">{p.title}</h3>
+                    <h3 className="font-display text-3xl font-light">{p.title}</h3>
                     <p className="mt-auto text-sm leading-relaxed text-muted-foreground">
                       {p.body}
                     </p>
@@ -430,8 +448,8 @@ function Index() {
             <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
               {testimonials.map((t, i) => (
                 <FadeIn key={t.name} delay={i * 0.08}>
-                  <figure className="flex h-full flex-col border-t border-border pt-8">
-                    <blockquote className="font-display text-xl leading-snug italic md:text-2xl">
+                  <figure className="flex h-full flex-col border-t border-border pt-8 hover:border-accent transition-colors duration-500">
+                    <blockquote className="font-display text-xl leading-snug font-light md:text-2xl">
                       &ldquo;{t.quote}&rdquo;
                     </blockquote>
                     <figcaption className="mt-auto pt-10 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
@@ -446,8 +464,12 @@ function Index() {
         </section>
 
         {/* Contact Band */}
-        <section id="contact" className="mt-16 bg-accent py-32 text-accent-foreground">
-          <div className="mx-auto max-w-7xl px-6 text-center">
+        <section
+          id="contact"
+          className="mt-16 bg-primary py-32 text-primary-foreground relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-foreground/80 opacity-50"></div>
+          <div className="mx-auto max-w-7xl px-6 text-center relative z-10">
             <FadeIn>
               <span className="mb-8 block font-mono text-[10px] uppercase tracking-[0.3em] opacity-70">
                 Begin
@@ -459,7 +481,7 @@ function Index() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-4 bg-background px-10 py-5 font-mono text-xs uppercase tracking-[0.2em] text-foreground transition-all hover:bg-foreground hover:text-background"
+                className="group inline-flex items-center gap-4 rounded-full bg-background px-10 py-5 font-mono text-xs uppercase tracking-[0.2em] text-foreground transition-all hover:bg-accent hover:text-foreground hover:scale-105 shadow-xl"
               >
                 Start a WhatsApp Consultation
                 <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -477,17 +499,23 @@ function Index() {
                   ZEXA
                 </span>
                 <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-                  Builders of quiet, durable architecture. Residential, commercial, renovation,
-                  and interior work — self-performed.
+                  Builders of quiet, durable architecture. Residential, commercial, renovation, and
+                  interior work — self-performed.
                 </p>
               </div>
               <div className="md:col-span-3 md:col-start-7">
                 <span className="mb-4 block font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
                   Studio
                 </span>
-                <a href="#work" className="block py-1 text-sm hover:text-accent">Work</a>
-                <a href="#services" className="block py-1 text-sm hover:text-accent">Services</a>
-                <a href="#process" className="block py-1 text-sm hover:text-accent">Process</a>
+                <a href="#work" className="block py-1 text-sm hover:text-accent">
+                  Work
+                </a>
+                <a href="#services" className="block py-1 text-sm hover:text-accent">
+                  Services
+                </a>
+                <a href="#process" className="block py-1 text-sm hover:text-accent">
+                  Process
+                </a>
               </div>
               <div className="md:col-span-3">
                 <span className="mb-4 block font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
